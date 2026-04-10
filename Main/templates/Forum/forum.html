@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Forum/forum.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navHorizontal">
+        <nav>
+            <ul class="horizontal"> 
+                <li><a href='{{ url_for("home.home") }}'>Home</a></li>
+                <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+                <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+            </ul>
+            <ul class="horizontal" id="accounts">
+            {% if session.get('user_id') %}
+                <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+            {% else %}
+               <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+               <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+            {% endif %}
+          </ul>
+        </nav> 
+    </div>
+
+    <div class="main">
+        <div class="menuLeft">
+            <div class="subjects">
+                <label for="GeneralBox" class="option">General</label>
+                <label for="MathsBox" class="option">Maths</label>
+                <label for="PhysicsBox" class="option">Physics</label>
+                <label for="ChemistryBox" class="option">Chemistry</label>
+                <label for="ComputingBox" class="option">Computing</label>
+                <label for="OtherBox" class="option">Other</label>
+            </div>
+        </div>
+
+        <div class="menu">
+            <h1 class="menuTitle">Select Subject to go to its Forum</h1>
+        </div>
+
+        <input type="radio" name="option" id="GeneralBox" class="optionBox">
+        <input type="radio" name="option" id="MathsBox" class="optionBox">
+        <input type="radio" name="option" id="PhysicsBox" class="optionBox">
+        <input type="radio" name="option" id="ChemistryBox" class="optionBox">
+        <input type="radio" name="option" id="ComputingBox" class="optionBox">
+        <input type="radio" name="option" id="OtherBox" class="optionBox">
+
+        <div class="General">
+            <div class="InputBox">
+                <input class="Post" placeholder="Post" id="genPost">
+                <input class="File" type="file" class="File" accept="image/*">
+                <button class="submit" onclick="submit_post('General', 'genPost')">Submit</button>
+            </div>
+            <div class="postsContainer" id="generalPosts"></div>
+        </div>
+
+        <div class="Maths">
+            <div class="InputBox">
+                <input class="Post" placeholder="Post" id="mathsPost">
+                <input class="File" type="file" class="File" accept="image/*">
+                <button class="submit" onclick="submit_post('Maths', 'mathsPost')">Submit</button>
+            </div>
+            <div class="postsContainer" id="mathsPosts"></div>
+        </div>
+
+        <div class="Physics">
+            <div class="InputBox">
+                <input class="Post" placeholder="Post" id="physicsPost">
+                <input class="File" type="file" class="File" accept="image/*">
+                <button class="submit" onclick="submit_post('Physics', 'physicsPost')">Submit</button>
+            </div>
+            <div class="postsContainer" id="physicsPosts"></div>
+        </div>
+
+        <div class="Chemistry">
+            <div class="InputBox">
+                <input class="Post" placeholder="Post" id="chemPost">
+                <input class="File" type="file" class="File" accept="image/*">
+                <button class="submit" onclick="submit_post('Chemistry', 'chemPost')">Submit</button>
+            </div>
+            <div class="postsContainer" id="chemistryPosts"></div>
+        </div>
+
+        <div class="Computing">
+            <div class="InputBox">
+                <input class="Post" placeholder="Post" id="computingPost">
+                <input class="File" type="file"  accept="image/*">
+                <button class="submit" onclick="submit_post('Computing', 'computingPost')">Submit</button>
+            </div>
+            <div class="postsContainer" id="computingPosts"></div>
+        </div>
+
+        <div class="Other">
+            <div class="InputBox">
+                <input class="Post" placeholder="Post" id="otherPost">
+                <input class="File" type="file" class="File" accept="image/*">
+                <button class="submit" onclick="submit_post('Other', 'otherPost')">Submit</button>
+            </div>
+            <div class="postsContainer" id="otherPosts"></div>
+        </div>
+    </div>
+
+
+<script src="{{url_for('static', filename='Forum/forum.js')}}"></script>
+</body>
+</html>

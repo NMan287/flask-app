@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Questions</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Questions/MyQuestions.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="horNav">
+        <nav>
+            <ul class="horizontal"> 
+                <label for="testCheckbox"><li id="sidebar">Menu</li></label>
+                <li><a href=''>Home</a></li>
+                <li><a href="/Forum/forum.html">Forum</a></li>
+                <li><a href="/Calculator/templates/calculator.html">Calculator</a></li>
+            </ul>
+            <ul class="horizontal" id="accounts">
+                {% if session.get('user_id') %}
+                    <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+                {% else %}
+                    <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+                    <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+            {% endif %}
+            </ul>
+        </nav> 
+    </div>
+
+    <input type="checkbox" id="testCheckbox"></input>
+    <div class="sidemenu">
+        <ul class="vertical">
+            <li><a href="/Calculator/templates/calculator.html">Calculator</a></li>
+            <li><a href="">Questions</a></li>
+            <li><a href="/Forum/forum.html">Forum</a></li>
+            <li><a href="/User Management/Settings.html">Settings</a></li>
+                        
+        </ul>
+        <ul class="vertical" id="accounts">
+            <li><a href="">Logout</a></li>
+        </ul>    
+    </div>
+
+    <div class="Main">
+    <div class="QuestionBox">
+        <h1 id="Title">Question History</h1>
+        <h2 style="font-family: Nunito;">Might take a while</h2>
+    </div>
+</div>
+
+<script>
+async function loadHistory() {
+    const res = await fetch("/questions/history");
+    if (!res.ok) {
+        document.getElementById("testList").innerHTML = "<p>Please log in to view your history.</p>";
+        return;
+    }
+
+    const data = await res.json();
+    const container = document.getElementById("testList");
+
+    if (data.tests.length === 0) {
+        container.innerHTML = "<p>You haven't taken any tests yet.</p>";
+        return;
+    }
+
+    container.innerHTML = data.tests.map(t => `
+        <div class="testCard">
+            <div class="testHeader">
+                <span class="subject">${t.subject} — ${t.topic}</span>
+                <span class="examBoard">${t.exam_board}</span>
+            </div>
+            <div class="testScore ${scoreClass(t.correct, t.total)}">
+                ${t.score}
+            </div>
+            ${t.improvement ? `
+            <div class="improvement">
+                <strong>Areas to improve:</strong> ${t.improvement}
+            </div>` : ''}
+        </div>
+    `).join('');
+}
+
+function scoreClass(correct, total) {
+    if (total === 0) return '';
+    const pct = correct / total;
+    if (pct >= 0.8) return 'good';
+    if (pct >= 0.5) return 'mid';
+    return 'poor';
+}
+
+loadHistory();
+</script>
+</body>
+</html>

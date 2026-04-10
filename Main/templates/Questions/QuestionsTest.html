@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Questions/QuestionsTest.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="horNav">
+        <nav>
+            <ul class="horizontal">
+                <label for="testCheckbox"><li id="sidebar">Menu</li></label>
+                <li><a href='{{ url_for("home.home") }}'>Home</a></li>
+                <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+                <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+            </ul>
+            <ul class="horizontal" id="accounts">
+                {% if session.get('user_id') %}
+                    <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+                {% else %}
+                    <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+                    <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    <input type="checkbox" id="testCheckbox">
+    <div class="sidemenu">
+        <ul class="vertical">
+            <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+            <li><a href='{{ url_for("home.questions_page") }}'>Questions</a></li>
+            <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+            <li><a href='{{ url_for("home.settings_page") }}'>Settings</a></li>
+        </ul>
+        <ul class="vertical" id="accounts">
+            <li><a href='{{ url_for("login_reg.login") }}'>Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="Main">
+        <div class="QuestionBox">
+            <h1 id="Title">Questions</h1>
+            <div id="questions"></div>
+            <p id="score" style="display:none; font-size:1.5rem; font-weight:bold;"></p>
+            <button id="submitBtn" onclick="submitAll()" style="display:none;">Submit Answers</button>
+        </div>
+    </div>
+
+    <script>
+    const testId = "{{ test_id }}";
+</script>
+    <script src="{{url_for('static', filename='Questions/QuestionsTest.js')}}"></script>
+</body>
+</html>

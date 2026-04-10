@@ -1,0 +1,39 @@
+from flask import render_template, redirect, Blueprint
+
+user_management_bp = Blueprint('user_management', __name__, template_folder='templates')
+
+@user_management_bp.route('/Home')
+def home():
+    return render_template("Home/HomeMenu.html")
+
+@user_management_bp.route("/Calculator")
+def calculator_page():
+    return render_template('Calculator/calculator.html')
+
+@user_management_bp.route("/Forum")
+def forum_page():
+    return render_template('Forum/forum.html')
+
+@user_management_bp.route("/Questions")
+def questions_page():
+    return render_template('Questions/questions.html')
+
+@user_management_bp.route("/Settings")
+def settings_page():
+    return render_template('User Management/Settings.html')
+
+@user_management_bp.route('/login')
+def login():
+    return render_template('Account/login.html')
+
+@user_management_bp.route('/register')
+def register():
+    return render_template('Account/register.html')
+
+@user_management_bp.route("/QuestionTest")
+def question_test():
+    return render_template("Questions/QuestionsTest.html")
+
+@user_management_bp.route("/MyQuestions")
+def my_questions():
+    return render_template("Questions/MyQuestions.html")

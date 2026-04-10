@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='User Management/settings.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <div class="navBarHorizonatal">
+            <nav>
+                <ul class="horizontal"> 
+                    <label for="OutputLeft"><li id="sidebar">Menu</li></label>
+                    <li><a href='{{ url_for("home.home") }}'>Home</a></li>
+                    <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+                    <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+                </ul>
+                
+                <ul class="horizontal" id="accounts">
+                    {% if session.get('user_id') %}
+                <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+            {% else %}
+               <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+               <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+            {% endif %}
+                </ul>
+            </nav> 
+        </div>
+
+
+        <input type="radio" name="option" id="optionBox1" class="optionBox">
+        <input type="radio" name="option" id="optionBox2" class="optionBox">
+        <input type="radio" name="option" id="optionBox3" class="optionBox">
+
+        <div class="containerLeft">
+
+            <input type="checkbox" id="OutputLeft">
+            <div class="navBarVertical">
+                <ul class="vertical">
+                    <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+                    <li><a href='{{ url_for("home.questions_page") }}'>Questions</a></li>
+                    <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+                    <li><a href='{{ url_for("home.settings_page") }}'>Settings</a></li>          
+                </ul>
+                <ul class="vertical" id="accounts">
+                    <li><a href='{{url_for("login_reg.login")}}'>Logout</a></li>
+                </ul>
+            </div>
+
+            <ul class="options">
+
+                <label for="optionBox2" class="userOpt">
+                <li>
+                    <label for="optionBox2">
+                    <h4 class="optTitle">AI Personalisation</h4>
+                </li>
+                </label>
+
+                <label for="optionBox3" class="userOpt">
+                <li>
+                    <h4 class="optTitle">Account</h4>
+
+                </li>
+            </label>
+   
+            </ul>
+        </div>
+        <div class="containerRight">
+            
+            <div class="account">
+    <h2>Customise your Account</h2>
+    <button><a href="{{ url_for('login_reg.forgot_pass') }}">Forgot Password?</a></button>
+    
+    <form action="{{ url_for('settings.username_change') }}" method="POST">
+        <div class="userchange">
+            <input name="username" id="userChange" placeholder="New username">
+            <button type="submit">Change Username</button>
+        </div>
+        <!-- show flashed messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </form>
+</div>
+
+            <div class="aiPersonalisation">
+                <h2 id="title">We have many ways to<br>adapt our ai system for your learning.<br>Pick an option that best fits you</h2>
+                
+                
+                           
+            
+
+                <form action="{{ url_for('answer.save_personality') }}" method="POST">
+    <div class="personality">
+        <label for="brief" class="OptionBOX">
+            <input type="radio" id="brief" class="PersOpt" name="personality" value="brief"
+                   {% if session.get('ai_personality') == 'brief' %} checked {% endif %}>
+            <div class="brief" id="optBrief">
+                <h1>Brief</h1>
+            </div>
+        </label>
+
+        <label for="detailed" class="OptionBOX">
+            <input type="radio" id="detailed" class="PersOpt" name="personality" value="detailed"
+                   {% if session.get('ai_personality', 'detailed') == 'detailed' %} checked {% endif %}>
+            <div class="detailed">
+                <h1>Detailed</h1>
+            </div>
+        </label>
+
+        <label for="diagram" class="OptionBOX">
+            <input type="radio" id="diagram" class="PersOpt" name="personality" value="diagram"
+                   {% if session.get('ai_personality') == 'diagram' %} checked {% endif %}>
+            <div class="diagram">
+                <h1>With Diagrams</h1>
+            </div>
+        </label>
+    </div>
+
+    <button type="submit">Save</button>
+    </form>
+
+        </div>
+        
+        
+    </div>
+<script src="{{ url_for('static', filename='User Management/settings.js') }}"></script>
+</body>
+</html>

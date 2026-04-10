@@ -1,0 +1,245 @@
+body{
+    background-color: rgb(236, 236, 236); 
+}
+
+
+.navHorizontal{
+    background-color: #333333;
+    padding: 0;
+    border-radius: 5px;
+}
+.horizontal{ 
+    list-style-type: none;
+    margin: 0;
+    padding: 5px; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #333333;
+    gap: 20px;
+    border-radius: 5px;
+} 
+.horizontal li{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Nunito;
+    white-space: nowrap;
+}
+.horizontal a{ 
+    color: white; 
+    display: block;
+    text-decoration: none; 
+    padding: 14px 16px;
+    transition: 0.25s; 
+} 
+.horizontal a:hover{ 
+    background-color: #222222;
+    border-radius: 5px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main{
+    width: 100%;
+    height: 100vh;
+}
+
+.menuLeft{
+    float: left;
+    width: 25%;
+    height: 100vh;
+    border: 2px solid black;
+}
+
+.InputBox{
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+   align-items: center;
+}
+
+label{
+    font-family: Nunito;
+    font-weight: bolder;
+    background-color: #222222;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    transition: 0.25s;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.optionBox {
+    display: none;
+}
+
+.option{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+label:hover{
+    background-color:#333333;
+}
+
+
+.Post{
+    font-size: 2rem;
+    padding: 10px;
+    font-family: Nunito;
+    width: 500px;
+}
+
+.File{
+    width: 300px;
+
+}
+
+.General{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    width: 70%;
+}
+
+.Chemistry{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    width: 70%;
+}
+.Maths{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    width: 70%;
+}
+.Physics{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    width: 70%;
+}
+.Computing{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    width: 70%;
+}
+.Other{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    width: 70%;
+}
+
+.menuTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Nunito;
+}
+
+.optionBox{
+    display: none;
+}
+
+#GeneralBox:checked ~ .General{ 
+    display: flex;
+}
+#MathsBox:checked ~ .Maths{ 
+    display: flex; 
+}
+#PhysicsBox:checked ~ .Physics{ 
+    display: flex; 
+}
+#ChemistryBox:checked ~ .Chemistry{ 
+    display: flex; 
+}
+#ComputingBox:checked ~ .Computing{ 
+    display: flex; 
+}
+#OtherBox:checked ~ .Other{ 
+    display: flex; 
+}
+
+.submit{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #222222;
+    color: white;
+    width: 120px;
+    height: 50px;
+    transition: 0.25s;
+    font-family: Nunito;
+    font-size: 20px;
+}
+
+.submit:hover{
+    background-color: #333333;
+}
+
+.PostDiv {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    width: 1000px;
+    min-height: 200px;
+    text-align: center;
+    padding: 16px;
+    margin: 12px 0;
+}
+
+.PostDiv p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    font-family: Nunito;
+}
+
+.PostDiv {
+    overflow: hidden;  /* prevents the div itself from expanding beyond its bounds */
+}
+
+.PostDiv img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* scales image to fit without cropping or stretching */
+}
+
+.postAuthor {
+    font-size: 2rem;
+    color: black;
+    display: block;
+    font-family: Nunito;
+    margin-bottom: 4px;
+}
+
+.commentAuthor {
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    font-family: Nunito;
+}

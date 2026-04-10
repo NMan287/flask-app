@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Account/register.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p style="color:red">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <h2 id="title1">Signup</h2>
+        <form class="loginContainer" method="post" action="/add">
+            <p class="inpText1">Email:</p>
+            <input type="email" name="email" placeholder="Enter email" class="inpBox1" required>
+            <p class="inpText1">Confirm Email:</p>
+            <input type="email" name="confirm_email" placeholder="Confirm email" class="inpBox1" required>
+            <p class="inpText1">Username:</p>
+            <input class="inpBox1" name="username" placeholder="Enter username" required>
+            <p class="inpText1">Password:</p>
+            <input type="password" name="password" class="inpBox1" placeholder="Enter password" required>
+            <p class="inpText1">Confirm Password:</p>
+            <input type="password" class="inpBox1" name="confirm_pass" placeholder="Confirm password" required>
+                
+            <button class="btn1">Signup</button>
+        </form>
+
+        <a id="signin" href="{{ url_for('login_reg.user_login') }}">Been here before? Login</a>
+    </div>
+</body>
+</html>

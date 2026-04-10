@@ -1,0 +1,84 @@
+body{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Nunito;
+}
+
+.container{
+    background-color: rgb(231, 231, 231);
+    width: 450px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: -1px 1px 5px;
+    padding: 10px;
+}
+
+#title1{
+    text-align: center;
+    font-weight: bold;
+    font-family: Nunito;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.resetContainer{
+    margin: 10px;
+    padding: 10px;
+}
+
+.inpText1{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Nunito;
+    display: inline-block;
+}
+
+.inpBox1{
+    font-size: 15px;
+    font-family: Nunito;
+    font-weight: bold;
+    padding: 5px;
+    margin: 10px;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.btn1{
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    font-size: 20px;
+    font-family: Nunito;
+    border-radius: 10px;
+    transition: 0.25s;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.btn1:hover{
+    background-color: rgb(168, 168, 168);
+    font-size: 22px;
+    width: 205px;
+    height: 55px;
+}
+
+.btn1:active{
+    background-color: rgb(126, 126, 126);
+    height: 45px;
+    width: 195px;
+    font-size: 18px;
+}
+
+#message{
+    text-align: center;
+    font-family: Nunito;
+    font-size: 14px;
+}

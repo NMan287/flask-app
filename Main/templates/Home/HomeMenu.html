@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Helper</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='Home/HomeMenu.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- horizontal navbar -->
+    <div class="container1">
+         <div class="horNav">
+                <nav>
+                    <ul class="horizontal"> 
+                        <label for="testCheckbox"><li id="sidebar">Menu</li></label>
+                        <li><a href="{{url_for('home.home')}}">Home</a></li>
+                        <li><a href="{{url_for('home.forum_page')}}">Forum</a></li>
+                        <li><a href="{{url_for('home.calculator_page')}}">Calculator</a></li>
+                    </ul>
+                    <ul class="horizontal" id="accounts">
+                         {% if session.get('user_id') %}
+                            <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+                        {% else %}
+                            <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+                            <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+                        {% endif %}
+                    </ul>
+                </nav> 
+        </div>
+            
+            <!--user can enter question or image-->
+            <div class="container2">
+                <div class="worded">
+                    <h1 id="prompt1">Enter Word Problem:</h1>
+                    <input id="wordProb" placeholder="Enter Question:">
+                </div>
+                
+                <input type="file" id="fileInput" style="display:none;" accept="image/*">
+                <div class="container3" id="filetype">
+                    <h2 class="box1">Submit File Type:</h2>
+                    <img id="imgPreview">
+                </div>
+                <a href="/answer">
+                    <button id="submitBtn" type="button">Submit</button>
+                </a>
+            </div>
+    </div>
+
+        <!--vertical navbar-->
+        <input type="checkbox" id="testCheckbox"></input>
+        <div class="sidemenu">
+            <ul class="vertical">
+                <li><a href="{{url_for('home.calculator_page')}}">Calculator</a></li>
+                <li><a href="{{url_for('home.questions_page')}}">Questions</a></li>
+                <li><a href="{{url_for('home.forum_page')}}">Forum</a></li>
+                <li><a href="{{url_for('home.settings_page')}}">Settings</a></li>
+                        
+            </ul>
+            <ul class="vertical" id="accounts">
+                <li><a href="">Logout</a></li>
+            </ul>    
+        </div>
+        <script src="{{ url_for('static', filename='Home/HomeMenu.js') }}"></script>
+</body>
+</html>

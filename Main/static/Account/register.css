@@ -1,0 +1,74 @@
+
+.container{
+    background-color: rgb(231, 231, 231);
+    width: 420px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: -1px 1px 5px;
+    margin: 60px auto;
+
+}
+
+body{
+    background-image: url("loginbackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+}
+
+#title1{
+    text-align: center;
+    font-family: Nunito;
+    font-size: 40px;
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.inpText1{
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: Nunito;
+    margin: 8px 0 2px 0;
+}
+
+.inpBox1{
+    width: 100%;
+    font-size: 20px;
+    font-family: Nunito;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.btn1{
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    font-size: 20px;
+    font-family: Nunito;
+    border-radius: 10px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.btn1:hover{
+    background-color: rgb(168, 168, 168);
+}
+
+#signin{
+    font-size: 20px;
+    font-family: Nunito;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    text-decoration: none;
+}

@@ -1,0 +1,355 @@
+body{
+    background-color: rgb(236, 236, 236); 
+}
+
+.containerLeft{
+    float: left;
+    width: 29%;
+    height: 100vh;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.containerRight{
+    float: right;
+    width: 70%;
+    height: 100vh;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Horizontal */
+.horizontal{
+    background-color: #333333;
+    list-style-type: none;
+    display: flex;
+    padding: 5px;
+    gap: 20px;
+    border-radius: 5px;
+    margin: 0;
+    justify-content: flex-start;
+    align-items: center;
+}
+.horizontal li{
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    font-family: Nunito;
+}
+.horizontal a{ 
+    color: white; 
+    display: block;
+    text-decoration: none; 
+    padding: 14px 16px;
+    transition: 0.25s; 
+} 
+.horizontal a:hover{ 
+    background-color: #222222;
+    border-radius: 5px;
+}
+#accounts{
+    gap: 20px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333333;
+}
+
+/* Vertical */
+#sidebar{
+    color: white; 
+    display: block;
+    text-decoration: none;
+    cursor: default;
+    padding: 14px 16px;
+    position: relative;
+}
+#sidebar:hover{
+    background-color: #222222;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#OutputLeft{
+    display: none;
+}
+.navBarVertical{
+    background-color: #333333;
+    width: 10%;
+    height: 700px;
+    min-width: 140px;
+    padding: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: none;
+    border-radius: 5px;
+    position: fixed;
+}
+.vertical{ 
+    list-style-type: none;
+    transform: translateX(-25px) translateY(20px);
+}
+.vertical li{
+    margin-bottom: 30px;
+}
+.vertical li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: Nunito;
+    padding: 14px 16px;
+    transition: 0.25s;
+    gap: 10px;
+    border-radius: 5px;
+}
+.vertical li a:hover{
+    background-color: #222222;
+}
+#OutputLeft:checked ~ .navBarVertical{
+    display: block;
+}
+
+/* Options */
+.options{
+    list-style-type: none;
+}
+
+.options li{
+    text-decoration: none;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: Nunito;
+    color: #ffffff;
+    gap: 10px;
+    background-color: #222222;
+    transition: 0.25s;
+    border-radius: 5px;
+}
+.options li:hover{
+    background-color: #333333;
+}
+#option1{
+    background-color: #333333;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+}
+.optionBox{
+    background-color: #222222;
+    display: none;
+}
+
+.account{
+        background-color: rgb(216, 216, 216);
+    margin: 1px;
+    padding: 10px;
+    height: 97vh;
+    border-radius: 5px;
+    display: none;
+}
+
+.aiPersonalisation{
+    background-color: rgb(216, 216, 216);
+    margin: 1px;
+    padding: 10px;
+    height: 97vh;
+    border-radius: 5px;
+    display: none;
+}
+
+.brief{
+    background-color: rgb(196, 196, 196);
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 40px;
+    margin-top: 100px;
+    display: flex;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.detailed{
+    background-color: rgb(196, 196, 196);
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 40px;
+    margin-top: 100px;
+    display: flex;
+    transition: 0.25s;
+    cursor: pointer;
+}
+.diagram{
+    background-color: rgb(196, 196, 196);
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 40px;
+    margin-top: 100px;
+    display: flex;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.diagram:hover, .detailed:hover, .brief:hover{
+    background-color: rgb(176, 176, 176);
+    scale: 0.98;
+}
+
+.diagram:active, .detailed:active, .brief:active{
+    scale: 0.95;
+}
+
+
+#title{
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    font-family: Nunito;
+}
+
+.personality{
+    display: flex;
+    width: 100%;
+    height: 50vh;
+    margin: 10px;
+    float: left;
+    align-items: center;
+}
+
+#optionBox2:checked ~ .personality{
+    display: block;
+}
+
+#optionBox3:checked ~ .account{
+    display: block;
+
+}
+h1{
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+/* Appearance */
+
+.appearance{
+    background-color: rgb(216, 216, 216);
+    margin: 5px;
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.OptionBOX input{
+    display: none;
+}
+
+.OptionBOX input:checked ~ .brief{
+    background-color: rgb(166, 166, 166);
+}
+.OptionBOX input:checked ~ .detailed{
+    background-color: rgb(166, 166, 166);
+}
+.OptionBOX input:checked ~ .diagram{
+    background-color: rgb(166, 166, 166);
+}
+
+.optTitle{
+    display: inline-block
+}
+
+.userOpt input:checked ~ .aiPersonalisation{
+    display: none;
+}
+
+/* */
+#optionBox1:checked ~ .containerRight .appearance{
+    display:flex;
+}
+
+#optionBox1:checked ~ .containerRight .aiPersonalisation{
+    display:none;
+}
+
+#optionBox2:checked ~ .containerRight .aiPersonalisation{
+    display:block;
+}
+
+#optionBox2:checked ~ .containerRight .appearance{
+    display:none;
+}
+/* */
+
+.button1{
+    position: relative;
+}
+#check1{
+    display: none;
+    transition: 0.25s;
+}
+
+.button1::before{
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 50px;
+    background-color: rgb(166, 166, 166);
+    border: 2px solid black;
+    border-radius: 50px;
+    transition: 0.25s;
+}
+
+.button1::after{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: gainsboro;
+    left: 5px;
+    top: 6px;
+    transition: 0.25s;
+}
+
+.button1:checked + .button1::after{
+    transform: translateX(20px);
+}
+#check1:checked + .button1::before{
+    background-color: rgb(112, 70, 70);
+}
+
+#check1:checked + .button1::after{
+    transform: translateX(34px);
+}
+
+#dark{
+    margin-left: 100px;
+    font-weight: bolder;
+    font-family: Nunito;
+}
+
+.darkmode{
+    background-color: black;
+    color: white;
+}
+
+/* Add these alongside your existing optionBox selectors */
+#optionBox3:checked ~ .containerRight .account {
+    display: block;
+}
+
+#optionBox3:checked ~ .containerRight .aiPersonalisation {
+    display: none;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solver</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='ai_solver/answer.css')}}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script type="module" src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11/package/dist/math.js"></script>
+
+        <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)'], ['$', '$']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']]
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+    
+    <canvas id="graphCanvas" style="display:none; max-width:600px; margin:20px auto;"></canvas>
+    <div class="horNav">
+        <nav>
+            <ul class="horizontal"> 
+                <label for="testCheckbox"><li id="sidebar">Menu</li></label>
+                <li><a href='{{ url_for("home.home") }}'>Home</a></li>
+                <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+                <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+            </ul>
+            <ul class="horizontal" id="accounts">
+                {% if session.get('user_id') %}
+                            <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+                        {% else %}
+                            <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+                            <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+                        {% endif %}
+            </ul>
+        </nav> 
+    </div>
+
+    <input type="checkbox" id="testCheckbox"></input>
+    <div class="sidemenu">
+        <ul class="vertical">
+            <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+            <li><a href='{{ url_for("home.questions_page") }}'>Questions</a></li>
+            <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+            <li><a href='{{ url_for("home.settings_page") }}'>Settings</a></li>
+                        
+        </ul>
+        <ul class="vertical" id="accounts">
+            <li><a href="">Logout</a></li>
+        </ul>    
+    </div>
+
+    <div class="main">
+        <h1 id="title">Answer:</h1>
+        <p id="displayedQ" style="font-weight: bold; font-family: Nunito; font-size: 1.5rem;"></p>
+        <div id="aiChat"></div>
+        <img id="displayImg" style="display: none;">
+        <div class="inputBox">
+            <input id="inpBox" placeholder="Ask Follow Up:">
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='ai_solver/answer.js')}}"></script>
+</body>
+</html>

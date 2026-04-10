@@ -1,0 +1,279 @@
+body{
+    margin: 0;
+    display: flex;
+    background-color: hsl(0, 0%, 95%);
+    padding-top: 180px;
+    justify-content: center;
+}
+#calculator{
+    font-family: Nunito;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 15px;
+    max-width: 450px;
+    overflow: hidden;
+}
+#display{
+    width: 100%;
+    padding: 20px;
+    font-size: 3rem;
+    text-align: left;
+    font-family: Nunito;
+    border: none;
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+}
+#keys{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+button{
+    width: 90%;
+    height: 90px;
+    border-radius: 50px;
+    border: none;
+    background-color: hsl(0, 0%, 30%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bolder;
+    font-family: Nunito;
+    cursor: pointer;
+}
+button:hover{
+    background-color: hsl(0, 0%, 40%);
+}
+button:active{
+    background-color: hsl(0, 0%, 50%);
+}
+.op-btn{
+    background-color: hsl(35, 100%, 55%);
+}
+.op-btn:hover{
+    background-color: hsl(35, 100%, 65%);
+}
+.op-btn:active{
+    background-color: hsl(35, 100%, 75%);
+}
+
+
+.horNav{ 
+    background-color: #333333;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 99%;
+    padding: 10px, 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+} 
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.horizontal{ 
+    list-style-type: none;
+    margin: 0;
+    padding: 5px; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #333333;
+    gap: 20px;
+} 
+
+.horizontal li{
+    font-size: 20px;
+    font-weight: bolder;
+    white-space: nowrap;
+    font-family: Nunito;
+}
+    
+.horizontal a{ 
+    color: white; 
+    display: block;
+    text-decoration: none; 
+    padding: 14px 16px;
+    transition: 0.25s; 
+} 
+
+.horizontal a:hover{ 
+    background-color: #222222;
+    border-radius: 5px;
+}
+
+/* Mention that this part is taken from chatgpt */
+@media (max-width: 1000px){
+    #calculator{
+        width: 380px;
+    }
+    button{
+        height: 75px;
+        font-size: 2rem;
+    }
+    #display{
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 700px){
+    #calculator{
+        width: 320px;
+    }
+    button{
+        height: 60px;
+        font-size: 1.7rem;
+    }
+    #display{
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 500px){
+    #calculator{
+        width: 260px;
+    }
+    button{
+        height: 50px;
+        font-size: 1.4rem;
+    }
+    #display{
+        font-size: 2rem;
+    }
+}
+
+#sidebar:hover{
+    background-color: #222222;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#testCheckbox{
+    display: none;
+}
+
+.sidemenu{
+    background-color: #333333;
+    width: 10%;
+    height: 700px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 140px;
+    padding: 0;
+    margin-top: 10px;
+    display: none;
+    border-radius: 5px;
+    transform: translateX(10px) translateY(70px);
+
+}
+
+.vertical{
+    
+    list-style-type: none;
+    transform: translateX(-25px) translateY(20px);
+    
+}
+
+.vertical li{
+    margin-bottom: 30px;
+}
+
+.vertical li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: Nunito;
+    padding: 14px 16px;
+    transition: 0.25s;
+    gap: 10px;
+    border-radius: 5px;
+}
+
+.vertical li a:hover{
+    background-color: #222222;
+}
+
+#testCheckbox:checked ~ .sidemenu{
+    display: block;
+}
+
+.container1{
+     background-color: rgb(236, 236, 236); 
+     height: 80px;
+} 
+
+#sidebar{
+    color: white; 
+    display: block;
+    text-decoration: none;
+    cursor: default;
+    padding: 14px 16px;
+    position: relative;
+}
+
+.history{
+    
+    margin: 20px;
+    width: 250px;
+    border: black;
+}
+
+#title{
+    font-weight: bolder;
+    font-family: Nunito;
+    text-align: center;
+}
+
+#Hbtn{
+    background-color: hsl(35, 100%, 55%);
+    border-radius: 100px;
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    color: white;
+    font-family: Nunito;
+    font-weight: bolder;
+    font-size: 2rem;
+    text-align: center;
+    cursor: pointer;
+}
+#PCBtn{
+    background-color: hsl(35, 100%, 55%);
+    border-radius: 100px;
+    margin: auto;
+    width: 90%;
+    height: 90%;
+    color: white;
+    font-family: Nunito;
+    font-weight: bolder;
+    font-size: 2rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.historyContainer{
+    background-color: rgb(54, 54, 54);
+    width: 400px;
+    height: 700px;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+    font-family: Nunito;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    display: none;
+
+}
+
+#history:checked + .historyContainer{
+    display: block;
+}

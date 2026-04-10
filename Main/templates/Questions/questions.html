@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Questions/questions.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="horNav">
+        <nav>
+            <ul class="horizontal"> 
+                <li><a href='{{ url_for("home.home") }}'>Home</a></li>
+                <li><a href='{{ url_for("home.forum_page") }}'>Forum</a></li>
+                <li><a href='{{ url_for("home.calculator_page") }}'>Calculator</a></li>
+            </ul>
+            <ul class="horizontal" id="accounts">
+                {% if session.get('user_id') %}
+                    <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+                {% else %}
+                    <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+                    <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main">
+        <h1>Questions</h1>
+        <p id="subtitle">Create Your own Set of Questions</p>
+        <div class="createQ">
+            <label for="subjectList">Subject:</label>
+            <select name="subject" id="subjectList">
+                <option value="Maths">Maths</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Computing">Computing</option>
+            </select>
+            <input placeholder="Topic" id="topic">
+            <label for="board">Exam Board</label>
+            <select name="examboard" id="board">
+                <option value="AQA">AQA</option>
+                <option value="Edexcel">Edexcel</option>
+                <option value="Eduqas/WJEC">Eduqas/Wjec</option>
+            </select>
+            <input placeholder="# Of Questions" id="qNum" type="number" min="1" max="20" value="5">
+            <button type="button" id="generateBtn" onclick="generateTest()">Generate Questions</button>
+            <a href="{{ url_for('questions.my_questions_page') }}" id="myQBtn">My Questions</a>
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='Questions/questions.js')}}"></script>
+</body>
+</html>

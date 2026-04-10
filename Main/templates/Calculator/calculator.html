@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='Calculator/calculator.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container1">
+        <div class="horNav">
+                <nav>
+                    <!-- Same side menu as the one in the home page -->
+                    <ul class="horizontal"> 
+                        <label for="testCheckbox"><li id="sidebar">Menu</li></label>
+                        <li><a href='{{url_for("home.home")}}'>Home</a></li>
+                        <li><a href='{{url_for("home.forum_page")}}'>Forum</a></li>
+                        <li><a href='{{url_for("home.calculator_page")}}'>Calculator</a></li>
+                    </ul>
+                    <ul class="horizontal" id="accounts">
+                        {% if session.get('user_id') %}
+
+                            <li><a href='{{ url_for("home.settings_page") }}'>Account</a></li>
+                        {% else %}
+                            <li><a href='{{ url_for("login_reg.register") }}'>Register</a></li>
+                            <li><a href='{{ url_for("login_reg.login") }}'>Login</a></li>
+                        {% endif %}
+                    </ul>
+                </nav> 
+        </div>
+    </div>
+
+    <div id="calculator">
+            <input id="display" readonly>
+        <div id="keys">
+
+            <button onclick="append_to_display('+')" class="op-btn">+</button>
+            <button onclick="append_to_display('7')">7</button>
+            <button onclick="append_to_display('8')">8</button>
+            <button onclick="append_to_display('9')">9</button>
+            <button onclick="append_to_display('-')" class="op-btn">-</button>
+            <button onclick="append_to_display('4')">4</button>
+            <button onclick="append_to_display('5')">5</button>
+            <button onclick="append_to_display('6')">6</button>
+            <button onclick="append_to_display('*')" class="op-btn">*</button>
+            <button onclick="append_to_display('1')">1</button>
+            <button onclick="append_to_display('2')">2</button>
+            <button onclick="append_to_display('3')">3</button>
+            <button onclick="append_to_display('/')" class="op-btn">/</button>
+            <button onclick="append_to_display('0')">0</button>
+            <button onclick="append_to_display('.')">.</button>
+            <button onclick="calculate()">=</button>
+
+            <label for="history" class="op_btn" id="Hbtn">H</label>
+
+            <button onclick="clear_display()" class="op-btn">C</button>
+            <button onclick="delete_value()" class="op-btn">DEL</button>
+        
+        </div>
+    </div>
+    <input type="checkbox" id="history" name="historyOpt" style="display: none;">
+    <div class="historyContainer" id="histCont">
+        <h1>History</h1>
+    </div>
+
+    <input type="checkbox" id="testCheckbox"></input>
+    <div class="sidemenu">
+        <ul class="vertical">
+            <li><a href='{{url_for("home.calculator_page")}}'>Calculator</a></li>
+            <li><a href='{{url_for("home.questions_page")}}'>Questions</a></li>
+            <li><a href='{{url_for("home.forum_page")}}'>Forum</a></li>
+            <li><a href='{{url_for("home.settings_page")}}'>Settings</a></li>
+                        
+        </ul>
+        <ul class="vertical" id="accounts">
+            <li><a href="">Logout</a></li>
+        </ul>    
+    </div>
+
+
+<script src="{{url_for('static', filename='Calculator/calculator.js')}}"></script>
+</body>
+</html>
